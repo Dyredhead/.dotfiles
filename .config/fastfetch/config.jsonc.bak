@@ -1,0 +1,116 @@
+// ~/.config/fastfetch/config.jsonc
+// See https://github.com/fastfetch-cli/fastfetch/wiki/Configuration for more details
+// See *.jsonc in https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples for more examples
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "builtin",
+        "source": "endeavouros-linux",
+        "padding": {
+            "top": 7,
+            "right": 10,
+            "left": 5
+        },
+        "position": "left"
+    },
+    "modules": [
+        "break",
+        {
+            "type": "title"
+        },
+
+        "separator",
+
+        {
+            "type": "host"
+        },
+        {
+            "type": "display",
+            "compactType": "original-with-refresh-rate",
+            "key": "Display(s)",
+            "order": "desc"
+        },
+        {
+            "type": "cpu",
+            "temp": true,
+            "format": "{1} ({5}) @ {7} GHz - {8}"
+        },
+        {
+            "type": "gpu",
+            "detectionMethod": "auto",
+            "format": "{2} ({7} /{9}) {12} GHz [{6}] - {4}",
+            "temp": true
+        },
+        {
+            "type": "memory"
+        },
+        // {
+        //     "type": "swap"
+        // },
+        {
+            "type": "disk",
+            "folders": "/:/home"
+        },
+        {
+            "type": "localip"
+        },
+        {
+            "type": "battery"
+        },
+        {
+            "type": "uptime"
+        },
+
+        "separator",
+
+        {
+            "type": "os"
+        },
+        {
+            "type": "kernel"
+        },
+        {
+            "type": "packages"
+        },
+        {
+            "type": "de"
+        },
+        {
+            "type": "wm"
+        },
+        {
+            "type": "terminal"
+        },
+        {
+            "type": "shell"
+        },
+
+        "separator",
+
+        {
+            "type": "wmtheme"
+        },
+        {
+            "type": "theme"
+        },
+        {
+            "type": "icons"
+        },
+        {
+            "type": "cursor"
+        },
+        {
+            "type": "font"
+        },
+        {
+            "type": "terminalfont"
+        },
+
+        // "poweradapter",
+        //"locale",
+        "break",
+        {
+            "type": "colors"
+        }
+    ]
+}
