@@ -1,0 +1,127 @@
+#!/bin/sh
+
+alias resource='source "$HOME"/.config/shell/sources '
+
+# cd
+alias ..='cd .. '
+alias ...='cd ../.. '
+
+# Unix
+alias c='clear '
+alias cf='clear && "$FETCH" '
+alias ccd='clear && cd '
+
+# System Administration
+alias sudo='sudo '
+alias sduo='sudo ' # I am bad at spelling :(
+alias dmesg='dmesg -wHT '
+alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+
+alias {poweroff,shutdown}='systemctl poweroff -i '
+alias {reboot,restart}='systemctl reboot -i '
+alias hibernate='systemctl hibernate -i '
+alias suspend='systemctl suspend -i '
+alias logout='loginctl terminate-user "$USER" '
+alias lock='loginctl lock-session '
+
+# Fix
+alias fix-monitors='gnome-monitor-config set -LM DP-2 -m 1920x1080@144.000 -LpM DP-1 -m 1920x1080@144.000 -x 1920 -y 0 '
+alias fix-audio='systemctl --user daemon-reload && systemctl --user restart pipewire && systemctl --user restart pipewire-pulse '
+
+
+if exists eza; then
+	alias l='eza --classify --icons --color=always --group-directories-first '
+	alias la='eza --all --icons --across --color=always --group-directories-first '
+	alias lh='eza --all | egrep '^\.' '
+	alias ll='eza --all --long --classify --icons --color=always --group-directories-first '
+	alias ls='eza --icons --across --color=always --group-directories-first '
+	alias tree='eza --tree '
+else
+	alias l=''
+	alias la='ls --all'
+	alias lh='ls --all | egrep "^\." '
+	alias ll='ls --all --long '
+	alias ls='ls --color=always '
+fi
+
+alias create='touch '
+alias edit='"$EDITOR" '
+alias history='history -i '
+
+if exists bat; then
+	alias read='bat --paging never '
+	alias page='bat --paging always '
+else
+	alias read='cat '
+	alias page='less '
+fi
+
+if exists trashy; then
+	alias trash='trashy put '
+fi
+
+if exists rsync; then
+	alias rsync='rsync --archive --recursive '
+	alias rsyncp='rsync --archive --recursive --progress --stats --info=progress2 --out-format="%t %f %''b" '
+	# alias cp='rsync --archive --recursive '
+	# alias cpp='rsync --archive --recursive --progress --stats --info=progress2 --out-format="%t %f %''b" '
+	# alias mv=''
+	# alias mvp=''
+# else
+	# alias cp='cp --interative --recursive '
+fi
+
+alias cp='cp --interactive --recursive '
+alias mv='mv --interactive  '
+
+# Git
+if exists git; then
+	alias ga='git add '
+	alias gaa='git add *'
+	alias gc='git commit -m '
+	alias gca='git commit -am '
+	alias gcq='git commit --allow-empty-message -am "" '
+	alias gp='git push '
+	alias gpq='gcq; gp '
+	alias gw='alias gh="firefox https://$(git config remote.origin.url | cut -f2 -d@ | tr ":" /)" '
+	alias gnf='onefetch '
+	alias gs='git status '
+fi
+
+# Development
+if exists make; then
+	alias clean='make clean '
+	alias compile='make compile '
+	alias run='make run '
+fi
+
+if exists sapm; then
+	alias pm='sapm '
+fi
+
+alias gcc='gcc -Wall -lstdc++ '
+
+
+# Fun stuff
+alias bonsai='cbonsai -l '
+alias donut='donut.c '
+alias matrix='unimatrix -n -s 96 -l "m" -i '
+alias pipes='pipes-rs '
+alias nf='neofetch '
+
+
+
+alias autojump='jumpto '
+alias cal='cal -m '
+alias fd='fdir '
+#alias grep="rg --color=always -i --context=0 -n "
+#alias make="make -s --no-print-directory "
+#alias mv="rsync -aP --remove-source-files "
+alias nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings
+alias pacman-all='pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse --bind "enter:execute(pacman -Syu {})" '
+alias pacman-installed='pacman -Qq | fzf --preview "pacman -Qil {}" --layout=reverse --bind "enter:execute(pacman -Qil {} | less)" '
+# alias rsync="rsync -P -r"
+alias running_services='systemctl list-units --type=service --state=running '
+alias {vsc,vscode}='code '
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+#alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config '

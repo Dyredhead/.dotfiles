@@ -1,0 +1,95 @@
+#!/bin/sh
+
+# XDG
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_CACHE_HOME="$HOME"/.cache
+
+# Path
+export PATH="$HOME"/.local/bin:"$XDG_DATA_HOME"/bin:"$PATH"
+if exists "$HOME"/.cargo/bin; 				then export PATH="$HOME"/.cargo/bin:"$PATH"; 			fi
+if exists "$XDG_DATA_HOME"/cargo/bin/; 		then export PATH="$XDG_DATA_HOME"/cargo/bin:"$PATH"; 	fi
+if exists /usr/lib/ccache/bin/; 			then export PATH=/usr/lib/ccache/bin/:"$PATH"; 			fi
+
+
+# Shell
+# export SHELL="$HOME"/.config/shell # does not work since $SHELL is a default variable set by ZSH
+export ALIASES="$HOME"/.config/shell/aliases
+export ENVIRONMENT="$HOME"/.config/shell/environment
+export FUNCTIONS="$HOME"/.config/shell/functions
+export RC="$HOME"/.config/shell/rc
+export SOURCES="$HOME"/.config/shell/sources
+
+
+# Default ENV
+if exists micro; 		then export EDITOR='micro';	 		fi
+if exists micro; 		then export SUDO_EDITOR='micro'; 	fi
+if exists code; 		then export VISUAL='code'; 			fi
+
+# Custom ENV
+# if exists zoxide; 	then export CD='__zoxide_z'; 	else export CD='builtin "cd"';	fi
+if exists fastfetch; 	then export FETCH='fastfetch'; 	else export FETCH='';	fi
+
+
+# Other Paths
+export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export HISTFILE="$XDG_STATE_HOME"/shell/history
+export JAVA_HOME=/usr/lib/jvm/java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export MANPATH="$XDG_DATA_HOME"/man:"$MANPATH";
+export NIMBLE_DIR="$XDG_DATA_HOME/nimble"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export PYTHONPATH="${PYTHONPATH}":"$HOME"/.local/lib/python3.10/site-packages
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
+export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+
+# Random
+export SAPM_DEFAULT_PACKAGE_MANAGER="pacman"
+export TLDR_OS=linux
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+export CLUTTER_PAINT=disable-dynamic-max-render-time
+export GTK_VERSION=4
+
+if exists mangohud; then
+	export MANGOHUD=1
+	# export MANGOHUD_CONFIG=no_display
+	export MANGOHUD_PRESETSFILE="$XDG_CONFIG_HOME"/MangoHud/presets.conf
+fi
+
+export MICRO_TRUECOLOR=1
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then export MOZ_ENABLE_WAYLAND=1; fi
+#export GDK_BACKEND=x11q
+#export LC_TIME=en_GB.utf8
+
+# ZSH Options
+
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt appendhistory
+setopt CHASE_LINKS
+setopt CDABLE_VARS
+
+bindkey '^H' backward-kill-word
+#bindkey '\e[A' history-beginning-search-backward
+#bindkey '\e[B' history-beginning-search-forward
+
+unset zle_bracketed_paste
+unsetopt CASE_GLOB

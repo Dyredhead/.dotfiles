@@ -1,0 +1,10 @@
+#!/bin/sh
+function exists() { command -v "$1" >/dev/null 2>/dev/null || test -e "$1"; }
+
+# Import global sources
+if exists /etc/shell/sources; 					then source /etc/shell/sources; 				fi 
+# Import local sources 
+if exists "$HOME"/.config/shell/environment; 	then source "$HOME"/.config/shell/environment; 	fi
+if exists "$HOME"/.config/shell/aliases; 		then source "$HOME"/.config/shell/aliases; 		fi
+if exists "$HOME"/.config/shell/functions; 		then source "$HOME"/.config/shell/functions;	fi
+if exists "$HOME"/.config/shell/rc; 			then source "$HOME"/.config/shell/rc;			fi

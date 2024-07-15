@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [[ ! -z "${FETCH}" ]]; then
+	$(echo "$FETCH")
+	echo -n "\n\n"
+fi
+ls
+
+if exists starship; then eval "$(starship init zsh)"; 					fi
+if exists zoxide; 	then eval "$(zoxide init --no-cmd zsh)"; 			fi
+if exists atuin;	then eval "$(atuin init zsh --disable-up-arrow)"; 	fi

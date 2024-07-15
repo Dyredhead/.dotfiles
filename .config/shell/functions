@@ -1,0 +1,161 @@
+#!/bin/sh
+
+function cd() {
+		if exists zoxide; then
+			__zoxide_z $@
+		else
+			builtin cd $@
+		fi
+
+		# "$CD" $@
+
+	    if [[ $(pwd) == "${HOME}" ]]; then
+	        $(echo "$FETCH")
+	        echo -n "\n\n"
+	        ls
+	    else
+			# if [ -d "${the_new_dir}/.git" ]; then
+				# onefetch 2> /dev/null
+			# fi
+			la
+		fi
+}
+
+# find file and cd into its directory or open it
+function cdf() {
+	export FZF_DEFAULT_COMMAND='fd --hidden --type f'
+
+	local dir=$(fzf \
+		--bind 'enter:accept{}' \
+		--bind 'alt-enter:execute[xdg-open $(dirname {})]' \
+    	--preview 'bat --color=always --style=numbers --line-range=:500 {}' \
+		--query "$1" \
+	)
+	if [[ ! -z "$dir" ]]; then
+		cd $(dirname "$dir")
+	fi
+}
+
+function fdir() { # find directory and cd into it or open it
+	export FZF_DEFAULT_COMMAND='fd --type d --hidden --exclude .git'
+
+	local dir=$(fzf \
+		--preview 'exa --tree --level=1 {}' \
+		--bind 'enter:accept' \
+		--bind 'alt-enter:execute(xdg-open {})' \
+		--query "$1"
+	)
+	if [[ ! -z "$dir" ]]; then
+		cd "$dir"
+	fi
+}
+
+function ff() { # find file and open it
+	export FZF_DEFAULT_COMMAND='fd --hidden --type f'
+
+	fzf \
+	--bind 'enter:execute(micro {})' \
+	--bind 'alt-enter:execute(xdg-open {})' \
+    --preview 'bat --color=always --style=numbers --line-range=:500 {}' \
+    --query "$1"
+}
+
+function fif() {
+	RG_PREFIX='rga --files-with-matches'
+	export FZF_DEFAULT_COMMAND='"$RG_PREFIX" "$1"'
+
+	fzf --sort \
+	--preview='[[ ! -z {} ]] && rga --pretty -n --context 5 {q} {}' \
+	--phony -q "$1" \
+	--bind 'change:reload:"$RG_PREFIX" {q}' \
+	#--preview-window="70%:wrap"
+}
+
+function open-file-location() {
+	dp=$(dirname "$1")
+	xdg-open dp
+}
+
+function mk() { # make file or directoy
+    for arg in "$@"
+    do
+	if [[ "$arg" == */ ]]; then
+            mkdir -v "$arg";
+        else
+            touch "$arg";
+        fi;
+    done
+}
+
+
+function mkcd() { # make a directory and cd into it
+    new_directory="$1";
+    mkdir new_directory && cd new_directory;
+}
+
+
+function open() {
+	for arg in "$@"; do
+		(xdg-open "$arg" > /dev/null)
+	done
+}
+
+
+function swap() {
+    if (( $# == 2)) ; then
+        TMPFILE=$(mktemp $(dirname "$1")/XXXXXX)
+        mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
+    else
+        echo 'Error: Two valid file paths required'
+        return 1
+    fi
+}
+
+
+function add_songs() {
+	setopt localoptions rmstarsilent
+
+	rm -rf /tmp/songs
+	mkdir -p /tmp/songs
+	
+	pushd /tmp/songs > /dev/null
+	for song in "$@"; do
+		spotdl "$song"
+	done
+
+	for song in *; do
+		rsync "$song" media.local:/srv/media/Music
+	done
+
+	popd > /dev/null
+}
+
+function up() {
+	# runs 'cd ..' x amount of times
+	for _ in $(seq 1 "$1"); do
+		cd ..
+	done
+}
+
+function extract() {
+	for archive in "$@"; do
+		if [ -f "$archive" ]; then
+			case $archive in
+			*.tar.bz2) tar xvjf $archive ;;
+			*.tar.gz) tar xvzf $archive ;;
+			*.bz2) bunzip2 $archive ;;
+			*.rar) rar x $archive ;;
+			*.gz) gunzip $archive ;;
+			*.tar) tar xvf $archive ;;
+			*.tbz2) tar xvjf $archive ;;
+			*.tgz) tar xvzf $archive ;;
+			*.zip) unzip $archive ;;
+			*.Z) uncompress $archive ;;
+			*.7z) 7z x $archive ;;
+			*) echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
