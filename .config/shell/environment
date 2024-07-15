@@ -60,7 +60,6 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 
 # Random
-export SAPM_DEFAULT_PACKAGE_MANAGER="pacman"
 export TLDR_OS=linux
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
