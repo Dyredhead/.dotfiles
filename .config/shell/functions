@@ -113,21 +113,7 @@ function swap() {
 
 
 function add_songs() {
-	setopt localoptions rmstarsilent
-
-	rm -rf /tmp/songs
-	mkdir -p /tmp/songs
-	
-	pushd /tmp/songs > /dev/null
-	for song in "$@"; do
-		spotdl "$song"
-	done
-
-	for song in *; do
-		rsync "$song" media.local:/srv/media/Music
-	done
-
-	popd > /dev/null
+	ssh dyredhead@media.local 'add_songs "$@"'
 }
 
 function up() {
