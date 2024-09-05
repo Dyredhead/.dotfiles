@@ -12,7 +12,7 @@ abbr ccd 'clear && cd'
 abbr sudo 'sudo'
 abbr sduo 'sudo' # I am bad at spelling :(
 abbr dmesg 'dmesg -wHT'
-abbr dotfiles '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+# abbr dotfiles '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 
 abbr poweroff 'systemctl poweroff -i'
 abbr shutdown 'systemctl poweroff -i'
