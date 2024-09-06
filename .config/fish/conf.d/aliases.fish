@@ -28,11 +28,6 @@ abbr history 'history -i'
 abbr la 'ls -a'
 abbr ll 'ls -l'
 
-
-if command -q trashy
-	abbr trash 'trashy put'
-end
-
 if command -q rsync
 	abbr rsync 'rsync --archive --recursive'
 	abbr rsyncp 'rsync --archive --recursive --progress --stats --info=progress2 --out-format="%t %f %''b"'
@@ -50,7 +45,7 @@ abbr mv 'mv --interactive '
 # Git
 if command -q git
 	abbr ga 'git add'
-	abbr gaa 'git add *'
+	abbr gaa 'git add -u'
 	abbr gc 'git commit -m'
 	abbr gca 'git commit -am'
 	abbr gcq 'git commit --allow-empty-message -am ""'
@@ -95,6 +90,7 @@ abbr pacman-all 'pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse --
 abbr pacman-installed 'pacman -Qq | fzf --preview "pacman -Qil {}" --layout=reverse --bind "enter:execute(pacman -Qil {} | less)"'
 # abbr rsync="rsync -P -r"
 abbr running_services 'systemctl list-units --type=service --state=running'
-abbr {vsc,vscode} 'code'
+abbr vsc 'code'
+abbr vscode 'code'
 # abbr wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 #abbr yarn 'yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'

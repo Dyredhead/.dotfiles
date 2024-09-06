@@ -8,8 +8,26 @@ if status is-interactive
     end
     ls
 
-    if command -q starship;	eval "$(starship init fish)"; 					end
-    if command -q zoxide; 	eval "$(zoxide init --no-cmd fish)"; 			end
-    if command -q atuin;	eval "$(atuin init fish --disable-up-arrow)"; 	end
+    if command -q starship;	starship init fish | source; 	end
+    if command -q zoxide; 	zoxide init fish | source;	    end
+    if command -q atuin;	atuin init fish | source;       end
+
+    # Needs to go here instead of ./functions/cd.fish to prevent infinite recursion with zoxide 
+    function cd --description 'zoxide instead of cd'
+    		if command -q zoxide
+    			__zoxide_z $argv
+    		else
+    			command cd $argv
+    		end
+    
+    	    if test "$(pwd)" = "$HOME"
+    	        eval "$FETCHER"
+    	        echo -ne "\n\n"
+    	        ls
+    	    else
+    			ls -a
+    		end
+    end
+    
 
 end
