@@ -17,7 +17,7 @@ if status is-interactive
     		if command -q zoxide
     			__zoxide_z $argv
     		else
-    			command cd $argv
+    			builtin cd $argv
     		end
     
     	    if test "$(pwd)" = "$HOME"
