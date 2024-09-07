@@ -10,7 +10,7 @@ if status is-interactive
 
     if command -q starship;	starship init fish | source; 	end
     if command -q zoxide; 	zoxide init fish | source;	    end
-    if command -q atuin;	atuin init fish | source;       end
+    # if command -q atuin;	atuin init fish --disable-up-arrow | source;       end.
 
     # Needs to go here instead of ./functions/cd.fish to prevent infinite recursion with zoxide 
     function cd --description 'zoxide instead of cd'
