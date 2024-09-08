@@ -67,7 +67,6 @@ set -gx TEXMFVAR 			"$XDG_CACHE_HOME/texlive/texmf-var"
 set -gx WINEPREFIX 			"$XDG_DATA_HOME/wine"
 
 set -gx --prepend PYTHONPATH 	"$HOME/.local/lib/python3.10/site-packages"
-set -gx --prepend MANPATH 		"$XDG_DATA_HOME/man"
 # set -gx _JAVA_OPTIONS 		-Djava.util.prefs.userRoot "$XDG_CONFIG_HOME/java"
 
 

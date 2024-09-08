@@ -5,7 +5,7 @@
 add_newline = true
 
 format = """
-[┌─┤](bold green) $username[@](bold green)$hostname [├─>](bold green) $directory
+[┌─┤](bold green) $shell$username[@](bold green)$hostname [├─>](bold green) $directory
 [└─>](bold green) 
 """
 
@@ -30,3 +30,12 @@ truncation_length = 3
 truncation_symbol = ".../"
 format = '[$path](bold cyan underline)'
 
+[shell]
+bash_indicator = ''
+zsh_indicator = ''
+fish_indicator = '󰈺'
+powershell_indicator = ''
+cmd_indicator = ''
+unknown_indicator = ''
+style = 'cyan bold'
+disabled = false
