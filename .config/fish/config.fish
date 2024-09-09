@@ -8,14 +8,17 @@ if status is-interactive
     end
     ls
 
-    if command -q starship;	starship init fish | source; 	end
-    if command -q zoxide; 	zoxide init fish | source;	    end
-    # if command -q atuin;	atuin init fish --disable-up-arrow | source;       end.
+    if command -q starship;	starship init fish | source; 	                end
+    if command -q zoxide; 	zoxide init fish | source;	                    end
+    if command -q atuin;	atuin init fish --disable-up-arrow | source;    end
 
+    fzf_configure_bindings --history
+    bind \cr _atuin_search
+    
     # Needs to go here instead of ./functions/cd.fish to prevent infinite recursion with zoxide 
     function cd --description 'zoxide instead of cd'
     		if command -q zoxide
-    			__zoxide_z $argv
+    			z $argv
     		else
     			builtin cd $argv
     		end
