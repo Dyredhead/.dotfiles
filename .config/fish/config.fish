@@ -31,6 +31,10 @@ if status is-interactive
     			ls -a
     		end
     end
-    
+
+    # Load host specific configs
+    if test -e "$HOME"/.config/fish/conf.d/host/"$HOSTNAME".fish
+        source "$HOME"/.config/fish/conf.d/host/"$HOSTNAME".fish
+    end
 
 end
