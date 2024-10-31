@@ -23,6 +23,9 @@ abbr suspend 'systemctl suspend -i'
 abbr logout 'loginctl terminate-user "$USER"'
 abbr lock 'loginctl lock-session'
 
+abbr lsblk 'lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINT,SIZE,MODEL'
+
+
 abbr history 'history -i'
 
 abbr la 'ls -a'
