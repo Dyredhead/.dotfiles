@@ -37,4 +37,7 @@ if status is-interactive
         source "$HOME"/.config/fish/conf.d/host/"$HOSTNAME".fish
     end
 
+    # Bind alt+(left/right) to jump entire line
+    bind \e\[1\;3D beginning-of-buffer  
+    bind \e\[1\;3C end-of-buffer
 end

@@ -23,6 +23,9 @@ abbr suspend 'systemctl suspend -i'
 abbr logout 'loginctl terminate-user "$USER"'
 abbr lock 'loginctl lock-session'
 
+abbr lsblk 'lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINT,SIZE,MODEL'
+
+
 abbr history 'history -i'
 
 abbr la 'ls -a'
@@ -46,8 +49,8 @@ abbr mv 'mv --interactive '
 if command -q git
 	abbr ga 'git add'
 	abbr gaa 'git add -u'
-	abbr gc 'git commit -m'
-	abbr gca 'git commit -am'
+	abbr gc --set-cursor 'git commit -m "%"'
+	abbr gca --set-cursor 'git commit -am "%"'
 	abbr gcq 'git commit --allow-empty-message -am ""'
 	abbr gp 'git push'
 	abbr gpq 'gcq; gp'
