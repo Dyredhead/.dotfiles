@@ -40,4 +40,8 @@ if status is-interactive
     # Bind alt+(left/right) to jump entire line
     bind \e\[1\;3D beginning-of-buffer  
     bind \e\[1\;3C end-of-buffer
+
+
+    set -gx MANPAGER "sh -c 'col -bx | bat --theme=default -l man -p'"
+    set -gx MANROFFOPT "-c"
 end
