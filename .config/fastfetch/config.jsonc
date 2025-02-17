@@ -32,13 +32,13 @@
         {
             "type": "cpu",
             "temp": true,
-            "format": "{name} ({cores-physical}) @ {freq-max} GHz - {temperature}"
+            "format": "{name} ({cores-physical}) @ {freq-max} - {temperature}"
         },
         {
             "type": "gpu",
             "detectionMethod": "auto",
             "driverSpecific": true,
-            "format": "{name} ({dedicated-used} / {dedicated-total}) {frequency} GHz [{type}] - {temperature}",
+            "format": "{name} ({dedicated-used} / {dedicated-total}) {frequency} [{type}] - {temperature}",
             "temp": true
         },
         {
