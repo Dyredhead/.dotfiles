@@ -1,0 +1,13 @@
+Host proxy
+	Hostname server-1.lan
+	Port 22
+	User root
+
+Host dy-pc.lan
+	User dyredhead
+
+Host *.lan
+	User root
+	Port 22
+	ForwardAgent yes
+	ProxyJump proxy
