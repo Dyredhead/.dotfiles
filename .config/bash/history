@@ -1,0 +1,9 @@
+sudo timeshift --list | tail -n 2 | head -n 1
+[["26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*created$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*created$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ .* ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*created.*$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*{timeshift-autosnap} {created before upgrade}.*$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*\{timeshift-autosnap\} \{created before upgrade\}.*$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*\{timeshift-autosnap\}\ \{created before upgrade\}.*$ ]] && echo "yes"
+[[ "26   >  2025-01-03_22-42-01  O     {timeshift-autosnap} {created before upgrade}" =~ ^.*\{timeshift-autosnap\}\ \{created\ before\ upgrade\}.*$ ]] && echo "yes"

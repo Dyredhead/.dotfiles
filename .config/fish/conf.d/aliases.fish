@@ -30,6 +30,7 @@ abbr history 'history -i'
 
 abbr la 'ls -a'
 abbr ll 'ls -l'
+abbr lla 'ls -al'
 
 if command -q rsync
 	abbr rsync 'rsync --archive --recursive'
