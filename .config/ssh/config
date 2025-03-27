@@ -10,4 +10,5 @@ Host *.lan
 	User root
 	Port 22
 	ForwardAgent yes
-	ProxyJump proxy
+   	ProxyCommand ssh -T -q -o 'ForwardAgent yes' proxy 'ssh-add -t 1 && nc %h %p'
+	# ProxyJump proxy
