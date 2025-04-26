@@ -39,7 +39,7 @@ if command -q code;         set -gx VISUAL "code"; 		end;
 if command -q fastfetch;    set -gx FETCHER "fastfetch"; 	end;
 
 if command -q mangohud
-							set -gx MANGOHUD "1"
+							# set -gx MANGOHUD "1"
 							set -gx MANGOHUD_PRESETSFILE "$XDG_CONFIG_HOME/MangoHud/presets.conf"
 end
 

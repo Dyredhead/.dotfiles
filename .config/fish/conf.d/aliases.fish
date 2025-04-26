@@ -25,6 +25,8 @@ abbr lock 'loginctl lock-session'
 
 abbr lsblk 'lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINT,SIZE,MODEL'
 
+abbr df 'df -h'
+abbr du 'du -sh'
 
 abbr history 'history -i'
 
@@ -98,3 +100,5 @@ abbr vsc 'code'
 abbr vscode 'code'
 # abbr wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 #abbr yarn 'yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
+abbr pm 'pacman'
+abbr aur 'paru'
