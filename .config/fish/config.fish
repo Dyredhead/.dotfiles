@@ -44,4 +44,8 @@ if status is-interactive
 
     set -gx MANPAGER "sh -c 'col -bx | bat --theme=default -l man -p'"
     set -gx MANROFFOPT "-c"
+    
+    set -gx SCHOOL "$HOME/Documents/School/14th Grade (Sophmore)/Spring Semester/"  
+    set -gx PERSONAL "$HOME/Documents/Personal/"
+
 end
