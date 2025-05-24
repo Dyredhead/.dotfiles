@@ -30,9 +30,9 @@ abbr du 'du -sh'
 
 abbr history 'history -i'
 
-abbr la 'ls -a'
+abbr la 'ls -A'
 abbr ll 'ls -l'
-abbr lla 'ls -al'
+abbr lla 'ls -Al'
 
 if command -q rsync
 	abbr rsync 'rsync --archive --recursive'

@@ -17,30 +17,64 @@ set -gx FUNCTIONS 	"$XDG_CONFIG_HOME/shell/functions"
 set -gx RC 			"$XDG_CONFIG_HOME/shell/rc"
 set -gx SOURCES 	"$XDG_CONFIG_HOME/shell/sources"
 
+if command -q eza
+    set -gx LISTER "eza"
+    set -gx LISTER_OPTS "--icons --color=always --group-directories-first" # --across
+else
+    set -gx LISTER "ls"
+    set -gx LISTER_OPTS "--color=always --group-directories-first"
+end
+
 if command -q micro
-                            set -gx EDITOR "micro"
-                            set -gx SUDO_EDITOR "micro"
-                            set -gx MICRO_TRUECOLOR "1"
+    set -gx EDITOR "micro"
+    set -gx SUDO_EDITOR "micro"
+    set -gx MICRO_TRUECOLOR "1"
 else 
-                            set -gx EDITOR "nano"
-                            set -gx SUDO_EDITOR "nano"
+    set -gx EDITOR "nano"
+    set -gx SUDO_EDITOR "nano"
 end
 
 if command -q bat 
-    set -gx PAGER "bat --paging always"
-    set -gx READER "bat --paging never"
+    set -gx PAGER "bat"
+    set -gx PAGER_OPTS "--paging always"
+    
+    set -gx READER "bat"
+    set -gx READER_OPTS "--paging never"
 else
     set -gx PAGER "less"
+    set -gx PAGER_OPTS ""
+
     set -gx READER "cat"
+    set -gx READER_OPTS ""
 end
 
-if command -q code;         set -gx VISUAL "code"; 		end;
+if command -q fd
+    set -gx FINDER "fd"
+    set -gx FINDER_OPTS ""
+else
+    set -gx FINDER "find"
+    set -gx FINDER_OPTS ""
+end
 
-if command -q fastfetch;    set -gx FETCHER "fastfetch"; 	end;
+if command -q rg
+    set -gx GREPER "rg"
+    set -gx GREPER_OPTS ""
+else
+    set -gx GREPER "grep"
+    set -gx GREPER_OPTS ""
+end
+
+if command -q code;         
+    set -gx VISUAL "code"; 	
+end;
+
+if command -q fastfetch;    
+    set -gx FETCHER "fastfetch"; 	
+end;
 
 if command -q mangohud
-							# set -gx MANGOHUD "1"
-							set -gx MANGOHUD_PRESETSFILE "$XDG_CONFIG_HOME/MangoHud/presets.conf"
+	# set -gx MANGOHUD "1"
+	set -gx MANGOHUD_PRESETSFILE "$XDG_CONFIG_HOME/MangoHud/presets.conf"
 end
 
 set -gx CALCHISTFILE		"$XDG_CACHE_HOME/calc_history"
