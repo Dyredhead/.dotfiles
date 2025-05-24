@@ -41,6 +41,13 @@ if status is-interactive
     bind \e\[1\;3D beginning-of-buffer  
     bind \e\[1\;3C end-of-buffer
 
+    # Bind ctrl+(backspace/del) to delete entire word
+    bind ctrl-backspace backward-kill-word    
+    bind ctrl-delete kill-word
+
+    # bind \cw backward-kill-bigword
+    # bind \e\[3\;5~ kill-word
+
 
     set -gx MANPAGER "sh -c 'col -bx | bat --theme=default -l man -p'"
     set -gx MANROFFOPT "-c"
