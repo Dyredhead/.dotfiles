@@ -56,3 +56,8 @@ if status is-interactive
     set -gx PERSONAL "$HOME/Documents/Personal/"
 
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/dyredhead/.lmstudio/bin
+# End of LM Studio CLI section
+

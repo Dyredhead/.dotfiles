@@ -17,6 +17,12 @@ set -gx FUNCTIONS 	"$XDG_CONFIG_HOME/shell/functions"
 set -gx RC 			"$XDG_CONFIG_HOME/shell/rc"
 set -gx SOURCES 	"$XDG_CONFIG_HOME/shell/sources"
 
+if command -q fzf
+    set -gx FZF_DEFAULT_COMMAND "fd --type f"
+    set -gx fzf_preview_dir_cmd eza --all --color=always
+    set -gx fzf_fd_opts --hidden --max-depth 1
+end
+
 if command -q eza
     set -gx LISTER "eza"
     set -gx LISTER_OPTS "--icons --color=always --group-directories-first" # --across
@@ -58,18 +64,19 @@ end
 
 if command -q rg
     set -gx GREPER "rg"
-    set -gx GREPER_OPTS ""
+    set -gx GREPER_OPTS "--ignore-case"
 else
     set -gx GREPER "grep"
     set -gx GREPER_OPTS ""
 end
 
 if command -q code;         
-    set -gx VISUAL "code"; 	
+    set -gx VISUAL "code" 	
 end;
 
 if command -q fastfetch;    
-    set -gx FETCHER "fastfetch"; 	
+    set -gx FETCHER "fastfetch"	
+    set -gx FETCHER_OPTS ""
 end;
 
 if command -q mangohud

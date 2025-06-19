@@ -85,3 +85,8 @@ _open_files_for_editing() {
 # alias pacdiff=eos-pacdiff
 ################################################################################
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/dyredhead/.lmstudio/bin"
+# End of LM Studio CLI section
+

@@ -33,6 +33,7 @@ abbr history 'history -i'
 abbr la 'ls -A'
 abbr ll 'ls -l'
 abbr lla 'ls -Al'
+abbr tree 'ls --tree'
 
 if command -q rsync
 	abbr rsync 'rsync --archive --recursive'
@@ -87,7 +88,7 @@ abbr nf 'neofetch'
 
 abbr autojump 'jumpto'
 abbr cal 'cal -m'
-abbr fd 'fdir'
+# abbr fd 'fdir'
 #abbr grep="rg --color=always -i --context=0 -n "
 #abbr make="make -s --no-print-directory "
 #abbr mv="rsync -aP --remove-source-files "

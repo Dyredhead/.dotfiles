@@ -1,3 +1,7 @@
 function page --description 'alias of \"$PAGER\"' --wraps $PAGER
-    eval command $PAGER $PAGER_OPTS $argv
+    if test -n "$PAGER_OPTS"
+        eval command $PAGER $PAGER_OPTS $argv
+    else 
+        eval command $PAGER $argv
+    end
 end
