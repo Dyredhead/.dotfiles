@@ -1,0 +1,18 @@
+[Appearance]
+Skin=dracula
+SkinInstalledWithKns=true
+
+[Desktop Entry]
+DefaultProfile=Fish.profile
+
+[Dialogs]
+FirstRun=false
+
+[FileDialogSize]
+3 screens: Height=540
+3 screens: Width=960
+
+[Window]
+DynamicTabTitles=true
+Height=80
+Width=100
