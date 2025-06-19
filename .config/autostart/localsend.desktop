@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=GTK;FileTransfer;Utility;
+Comment[en_US]=
+Comment=
+Exec=localsend --hidden %U 
+GenericName[en_US]=An open source cross-platform alternative to AirDrop
+GenericName=An open source cross-platform alternative to AirDrop
+Icon=localsend
+Keywords=Sharing;LAN;Files;
+MimeType=
+Name[en_US]=LocalSend
+Name=LocalSend
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.17.0+58
+X-KDE-SubstituteUID=false
+X-KDE-Username=

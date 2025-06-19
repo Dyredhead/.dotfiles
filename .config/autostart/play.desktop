@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=play /home/dyredhead/Music/Welcome\\ aboard,\\ Captain.wav
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Welcome aboard, Captain
+Name=Welcome aboard, Captain
+Comment[en_US]=
+Comment=
