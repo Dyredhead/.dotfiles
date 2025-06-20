@@ -1,0 +1,8 @@
+{
+    "colorscheme": "darcula",
+    "lsp.ignoreTriggerCharacters": "completion,signature",
+    "lsp.server": "python=pyls,go=gopls,typescript=deno lsp,rust=rust-analyzer",
+    "softwrap": true,
+    "wordwrap": true,
+	"tabsize": 4
+}
