@@ -1,1 +1,9 @@
-/etc/fstab
+# <file system> <mount point> <type> <options> <dump> <pass>
+
+LABEL=BOOT		/boot			vfat	defaults,noatime	0	2
+LABEL=ROOT		/				ext4	defaults,noatime	0	1
+LABEL=HOME		/home			ext4	defaults,noatime	0	2
+LABEL=GAMES		/mnt/Games		ext4	defaults,nofail,x-systemd.automount	0	0
+LABEL=BACKUPS	/mnt/Backups	ext4	defaults,nofail,x-systemd.automount	0	0
+nas.lan:/data	/mnt/NAS		nfs		defaults,nofail,bg,x-systemd.automount,_netdev	0	0
+tmpfs			/tmp			tmpfs	defaults,noatime,mode=1777	0	0
