@@ -38,8 +38,5 @@ ToolButtonStyle=IconOnly
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,pothumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mltpreview,mobithumbnail,opendocumentthumbnail,palathumbcreator,gsthumbnail,quithumbnail,rawthumbnail,svgthumbnail,itinerarythumbnail,ffmpegthumbs,webarchivethumbnail
 
-[Search]
-What=Content
-
 [Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
